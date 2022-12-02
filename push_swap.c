@@ -5,74 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 11:55:42 by okrich            #+#    #+#             */
-/*   Updated: 2022/11/30 18:30:49 by okrich           ###   ########.fr       */
+/*   Created: 2022/12/02 12:16:42 by okrich            #+#    #+#             */
+/*   Updated: 2022/12/02 14:01:00 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
-int	isvalid(char *str)
-{
-	if (*str == '-' || *str == '+')
-		str++;
-	if (*str == '\0')
-		return (1);
-	while(*str)
-	{
-		if (*str >= '0' && *str <= '9')
-			str++;
-		else
-			return (1);
-	}
-	return (0);
-}
 
-void	print_list(t_list **begin_list)
+void	ft_push_swap(t_list **a, t_list **b)
 {
-	int i = 1;
-	t_list *tmp = *begin_list;
-	while(tmp)
-	{
-		printf("%d\n",tmp->data);
-		tmp = tmp->next;
-			i++;
-	}
-}
+	int	size;
 
-void my_exit()
-{
-	system("leaks a.out");
-}
+	size = ft_lstsize(*a);
+	if (size == 2)
+		swap(a, 'a');
+	else if(size == 3)
+		case_of_three(a);
 
-int	main(int ac, char **av)
-{
-	t_list	*a;
-	t_list	*b;
-	t_list	*node;
-	int		i;
-
-	i = 0;
-	while(++i < ac)
-	{
-		if (isvalid(av[i]))
-			return(write(2, "error", 5), 1);
-		// remplir la liste par len num || puis linker le ND entre eux;
-	}
-	i = 0;
-	while(++i < ac)
-	{
-		node = ft_lstnew(ft_atoi(av[i])); 
-		ft_lstadd_back(&a, node);
-	}
-	if (cmp(a))
-	{
-		ft_lstclear(&a);
-		return(write(2, "error", 5), 1);
-	}
-	if (is_sorted(a))
-		return(ft_lstclear(&a), 0);
-	atexit(my_exit);
-	// print_list(&a);
 }

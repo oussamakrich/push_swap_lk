@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:56:10 by okrich            #+#    #+#             */
-/*   Updated: 2022/11/30 18:28:48 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/02 14:01:36 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
+# include <stdlib.h>
 
 typedef struct s_list
 {
@@ -22,22 +24,24 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-void	swap(int *stack, int size, char c);
-void	ss(int	*stack_a, int *stack_b, int size_a, int size_b);
-void	push(int *src, int *dst, int *size_src, int *size_dst, char c);
-void	rotate(int	*stack, int size, char c);
-void	reverse_rotate(int *stack, int size, char c);
-void	rrr(int *stack_a, int *stack_b, int size_a, int size_b);
-void	rr(int *stack_a, int *stack_b, int size_a, int size_b);
-void	case_of_three(int *ar, int size);
-void	case_of_five(int *a, int *b, int size_a, int size_b);
-void	case_of_onehundred(int *a, int *b, int size_a, int size_b);
+int	pos_min(int	*ar, int size);
+
+void	case_of_three(t_list **a);
+
+void	ft_push_swap(t_list **a, t_list **b);
+void	swap(t_list	**a, char c);
+void	ss(t_list **a, t_list **b);
+void	push(t_list	**src, t_list **dst, char c);
+void	rotate(t_list **lst, char c);
+void	rr(t_list **a, t_list **b);
+void	reverse_rotate(t_list **lst, char c);
+void	rrr(t_list **a, t_list **b);
 
 int	ft_atoi(char *str);
-int	cmp(t_list *lst);
-int	pos_min(int	*ar, int size);
 int	is_sorted(t_list *a);
+int	cmp(t_list *lst);
 
+t_list	*ft_before_last(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(int data);
 
