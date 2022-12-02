@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 11:51:30 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/02 14:10:57 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/02 17:27:26 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,44 +33,60 @@ void	case_of_three(t_list **a)
 			swap(a, 'a');
 	}
 }
-//
-// void	case_of_five(int *a, int *b, int size_a, int size_b)
-// {
-// 	int	pos;
-// 	
-// 	while(size_a > 3)
-// 	{
-// 		pos = pos_min(a, size_a);
-// 		if (pos == 2)
-// 			swap(a, size_a, 'a');
-// 		else if(pos == 3)
-// 		{
-// 			rotate(a, size_a, 'a');
-// 			swap(a, size_a, 'a');
-// 		}
-// 		else if (pos == 4 && size_a == 5)
-// 		{
-// 			reverse_rotate(a, size_a, 'a');
-// 			reverse_rotate(a, size_a, 'a');
-// 		}
-// 		else if (pos == 5 || pos == 4)
-// 			reverse_rotate(a, size_a, 'a');
-// 		push(a, b, &size_a, &size_b, 'b');
-// 	}
-// 	case_of_three(a, size_a);
-// 	push(b, a, &size_b, &size_a, 'a');
-// 	push(b, a, &size_b, &size_a, 'a');
-// }
+
+void	case_of_four(t_list **a, t_list **b)
+{
+	int	pos;
+
+	pos = pos_min(*a);
+	if (pos == 2)
+		swap(a, 'a');
+	else if (pos == 3)
+	{
+		rotate(a, 'a');
+		swap(a, 'a');
+	}
+	else if (pos == 4)
+		reverse_rotate(a, 'a');
+	push(a, b, 'b');
+	case_of_three(a);
+	push(b, a, 'a');
+}
 
 void	case_of_five(t_list	**a, t_list **b)
 {
-	
+	int	pos;
+	int	size_a = 5;
+
+	while(size_a > 3)
+	{
+		pos = pos_min(*a);
+		if (pos == 2)
+			swap(a, 'a');
+		else if(pos == 3)
+		{
+			rotate(a, 'a');
+			swap(a, 'a');
+		}
+		else if (pos == 4 && size_a == 5)
+		{
+			reverse_rotate(a, 'a');
+			reverse_rotate(a, 'a');
+		}
+		else if (pos == 5 || pos == 4)
+			reverse_rotate(a, 'a');
+		push(a, b, 'b');
+		size_a = ft_lstsize(*a);
+	}
+	case_of_three(a);
+	push(b, a, 'a');
+	push(b, a, 'a');
 }
 
 
 void	case_of_onehundred(int *a, int *b, int size_a, int size_b)
 {
-		
+				
 }
 
 

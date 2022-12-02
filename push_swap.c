@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 12:16:42 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/02 14:01:00 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/02 17:05:01 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ void	ft_push_swap(t_list **a, t_list **b)
 		swap(a, 'a');
 	else if(size == 3)
 		case_of_three(a);
+	else if (size == 4)
+		case_of_four(a, b);
 
 }

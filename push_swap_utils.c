@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:55:45 by okrich            #+#    #+#             */
-/*   Updated: 2022/11/30 18:28:27 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/02 17:25:32 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,25 +55,27 @@ int	cmp(t_list	*lst)
 	return (0);
 }
 
-int	pos_min(int	*ar, int size)
+int	pos_min(t_list	*lst)
 {
+	int	i;
 	int	pos;
 	int	min;
-	int	ret;
 
-	pos = 0;
-	min = ar[pos];
-	ret = pos;
-	while(pos < size)
+	i = 1;
+	pos = i;
+	min = lst->data;
+	lst = lst->next;
+	while(lst)
 	{
-		if (min > ar[pos])
+		if (min > lst->data)
 		{
-			min = ar[pos];
-			ret = pos;
+			pos = i + 1;
+			min = lst->data;
 		}
-		pos++;
+		i++;
+		lst = lst->next;
 	}
-	return (ret + 1);
+	return(pos);
 }
 
 int	is_sorted(t_list *a)
@@ -87,3 +89,18 @@ int	is_sorted(t_list *a)
 	return (1);
 }
 
+void	ft_indexin(t_list **lst, t_list	*nd)
+{
+	t_list	*tmp;
+
+	tmp = *lst;
+	nd->index = 0;
+	while (tmp)
+	{
+		if (tmp->data > nd->data)
+			tmp->index += 1;
+		else
+			nd->index += 1;
+		tmp = tmp->next;
+	}
+}
