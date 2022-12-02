@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 11:51:30 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/02 17:27:26 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/02 19:28:24 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,31 @@ void	case_of_five(t_list	**a, t_list **b)
 }
 
 
-void	case_of_onehundred(int *a, int *b, int size_a, int size_b)
+void	case_of_onehundred(t_list **a, t_list **b)
 {
-				
+	int	min;
+	int	max;
+	int	size;
+	int i = 1;
+
+	min = 0;
+	max = min + (ft_lstsize(*a) / 5);
+	size = ft_lstsize(*a);
+	while(i <= size || size != 0)
+	{
+		int nb = (*a)->data;
+		if(nb >= min && nb <= max)
+		{
+			push(a, b, 'b');
+			if (nb >= max / 2)
+				rotate(b, 'b');
+		}
+		else
+			rotate(a, 'a');
+		size = ft_lstsize(*a);
+		i++;
+	}
 }
-
-
-
-
 
 
 
