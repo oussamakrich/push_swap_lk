@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 11:51:30 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/02 19:28:24 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/03 11:52:51 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,31 +84,56 @@ void	case_of_five(t_list	**a, t_list **b)
 }
 
 
-void	case_of_onehundred(t_list **a, t_list **b)
+void	case_of_over_five(t_list **a, t_list **b)
 {
-	int	min;
-	int	max;
-	int	size;
-	int i = 1;
+	// int	min;
+	// int	max;
+	// int	size;
+	// int i = 1;
+	//
+	// min = 0;
+	// max = min + (ft_lstsize(*a) / 5);
+	// size = ft_lstsize(*a);
+	// while(i <= size || size != 0)
+	// {
+	// 	int nb = (*a)->data;
+	// 	if(nb >= min && nb <= max)
+	// 	{
+	// 		push(a, b, 'b');
+	// 		if (nb >= max / 2)
+	// 			rotate(b, 'b');
+	// 	}
+		// 	else
+	// 		rotate(a, 'a');
+	// 	size = ft_lstsize(*a);
+	// 	i++;
+	// }
 
-	min = 0;
-	max = min + (ft_lstsize(*a) / 5);
-	size = ft_lstsize(*a);
-	while(i <= size || size != 0)
+	int	ref;
+	int	i;
+	int nb;
+	
+	i = 1;
+	if (ft_lstsize(*a) <= 100)
+		ref = ft_lstsize(*a) / 5;
+	else
+		ref = ft_lstsize(*a) / 10;
+	while(*a)
 	{
-		int nb = (*a)->data;
-		if(nb >= min && nb <= max)
+		while(*a && i <= ref)
 		{
-			push(a, b, 'b');
-			if (nb >= max / 2)
-				rotate(b, 'b');
+			nb = (*a)->index;
+			if (nb < ref)
+			{
+				push(a, b, 'b');
+				if (nb > ref / 2)
+					rotate(b, 'b');
+				i++;
+			}
+			else
+				rotate(a, 'a');
 		}
-		else
-			rotate(a, 'a');
-		size = ft_lstsize(*a);
-		i++;
+		ref += ref;
 	}
+
 }
-
-
-

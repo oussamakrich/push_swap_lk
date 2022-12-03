@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 11:55:42 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/02 18:53:31 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/03 11:42:31 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_list(t_list **begin_list)
 	t_list *tmp = *begin_list;
 	while(tmp)
 	{
-		printf("data = %d\n",tmp->data);
+		printf("data = %d index = %d\n",tmp->data,tmp->index);
 		tmp = tmp->next;
 	}
 }
@@ -73,7 +73,7 @@ int	main(int ac, char **av)
 	// }
 	// if (is_sorted(a))
 	// 	return(ft_lstclear(&a), 0);
-	case_of_onehundred(&a, &b);
+	case_of_over_five(&a, &b);
 	print_list(&a);
 	printf("--------\n");
 	print_list(&b);

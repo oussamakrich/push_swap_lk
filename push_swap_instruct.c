@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:55:43 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/02 13:36:00 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/03 11:42:09 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	rotate(t_list **lst, char c)
 {
 	t_list	*tmp;
 
-	if ((*lst)->next == NULL)
+	if (ft_lstsize(*lst) == 1)
 		return ;
 	tmp = *lst;
 	ft_lstadd_back(lst, *lst);	
@@ -71,7 +71,7 @@ void	reverse_rotate(t_list **lst, char c)
 	t_list	*last;
 	t_list	*beforelast;
 
-	if ((*lst)->next == NULL)
+	if (ft_lstsize(*lst) == 1) 
 		return ;
 	beforelast = ft_before_last(*lst);
 	last = ft_lstlast(*lst);
