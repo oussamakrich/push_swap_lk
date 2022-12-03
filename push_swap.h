@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:56:10 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/03 11:06:49 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/03 14:35:22 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	case_of_three(t_list **a);
 void	case_of_four(t_list **a, t_list **b);
 void	case_of_five(t_list	**a, t_list **b);
 void	case_of_over_five(t_list **a, t_list **b);
+void	get_b(t_list **a, t_list **b);
 
 void	ft_push_swap(t_list **a, t_list **b);
 void	swap(t_list	**a, char c);

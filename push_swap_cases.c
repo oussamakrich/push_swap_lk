@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 11:51:30 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/03 11:52:51 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/03 14:49:31 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,28 +112,63 @@ void	case_of_over_five(t_list **a, t_list **b)
 	int	ref;
 	int	i;
 	int nb;
+	int	moy;
+	int	chunk;
 	
-	i = 1;
 	if (ft_lstsize(*a) <= 100)
-		ref = ft_lstsize(*a) / 5;
+		chunk = ft_lstsize(*a) / 5;
 	else
-		ref = ft_lstsize(*a) / 10;
+		chunk = ft_lstsize(*a) / 10;
+	moy = chunk / 2;
+	ref = 0;
 	while(*a)
 	{
-		while(*a && i <= ref)
+		i = 0;
+		ref += chunk;
+		while(*a && i < chunk)
 		{
 			nb = (*a)->index;
 			if (nb < ref)
 			{
 				push(a, b, 'b');
-				if (nb > ref / 2)
+				if (nb >= ref - moy)
 					rotate(b, 'b');
 				i++;
 			}
 			else
 				rotate(a, 'a');
 		}
-		ref += ref;
 	}
-
 }
+
+void	get_b(t_list **a, t_list **b)
+{
+	int		chunk;
+	t_list	*last;
+	t_list	*before_last;
+
+	chunk = ft_lstsize(*b);	
+	while(--chunk > 0 && ft_lstsize(*b) > 1)
+	{
+		last = ft_lstlast(*b);
+		before_last = ft_before_last(*b);
+		if (chunk == (*b)->next->index)
+			swap(b, 'b');
+		else if (chunk == before_last->index)
+		{
+			reverse_rotate(b , 'b');
+			reverse_rotate(b , 'b');
+		}
+		else if (chunk == last->index)
+			reverse_rotate(b , 'b');
+		push(b, a, 'a');
+	}
+	push(b, a, 'a');
+}
+
+
+
+
+
+
+

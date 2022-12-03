@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:01:12 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/02 13:47:06 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/03 15:10:35 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ t_list	*ft_lstlast(t_list *lst)
 	}	
 	return (lst);
 }
+
 void	ft_lstclear(t_list **lst)
 {
 	t_list	*tmp;
@@ -87,9 +88,9 @@ void	ft_lstclear(t_list **lst)
 	while (*lst)
 	{
 		tmp = (*lst)->next;
-		free(lst);
+		free(*lst);
 		*lst = tmp;
 		// for debug 
-		printf("free\n");
+		// printf("free\n");
 	}
 }
