@@ -6,22 +6,25 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:55:43 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/03 12:08:59 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/04 16:03:50 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "printf/ft_printf.h"
 
 void	swap(t_list	**lst, char c)
 {
-	int	tmp;
+	int	tmp_data;
+	int	tmp_index;
 
 	if (*lst == NULL || (*lst)->next == NULL)
 		return ;
-	tmp = (*lst)->data;
+	tmp_data = (*lst)->data;
+	tmp_index = (*lst)->index;
 	(*lst)->data = (*lst)->next->data;
-	(*lst)->next->data = tmp;
+	(*lst)->index = (*lst)->next->index;
+	(*lst)->next->data = tmp_data;
+	(*lst)->next->index = tmp_index;
 	if (c != '0')
 		ft_printf("s%c\n",c);
 }

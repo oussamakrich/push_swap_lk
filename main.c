@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 11:55:42 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/03 15:14:33 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/04 17:32:00 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	main(int ac, char **av)
 	i = 0;
 	while(++i < ac)
 	{
+		// FIX : CHECK OVERFLOW
 		if (isvalid(av[i]))
-			return(write(2, "error", 5), 1);
-		// remplir la liste par len num || puis linker le ND entre eux;
+			return(write(2, "error val", 9), 1);
 	}
 	i = 0;
 	while(++i < ac)
@@ -67,19 +67,15 @@ int	main(int ac, char **av)
 		ft_indexin(&a,node);
 		ft_lstadd_back(&a, node);
 	}
-	// !!!!!pointer being freed was not allocated!!!!
 	if (cmp(a))
 	{
 		ft_lstclear(&a);
-		return(write(2, "error", 5), 1);
+		return(write(2, "error cmp", 9), 1);
 	}
 	if (is_sorted(a))
 		return(ft_lstclear(&a), 0);
-	// ft_push_swap(&a, &b);
-	// print_list(&a);
-	// printf("--------\n");
-	// print_list(&b);
-	// ft_lstclear(&a);
-
-	atexit(my_exit);
+	ft_push_swap(&a, &b);
+	print_list(&a);
+	printf("is sorted : %d",is_sorted(a));
+	// atexit(my_exit);
 }

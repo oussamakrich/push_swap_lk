@@ -6,13 +6,12 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 11:51:30 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/03 14:49:31 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/04 16:51:49 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
-#include <unistd.h>
 
 void	case_of_three(t_list **a)
 {
@@ -86,35 +85,12 @@ void	case_of_five(t_list	**a, t_list **b)
 
 void	case_of_over_five(t_list **a, t_list **b)
 {
-	// int	min;
-	// int	max;
-	// int	size;
-	// int i = 1;
-	//
-	// min = 0;
-	// max = min + (ft_lstsize(*a) / 5);
-	// size = ft_lstsize(*a);
-	// while(i <= size || size != 0)
-	// {
-	// 	int nb = (*a)->data;
-	// 	if(nb >= min && nb <= max)
-	// 	{
-	// 		push(a, b, 'b');
-	// 		if (nb >= max / 2)
-	// 			rotate(b, 'b');
-	// 	}
-		// 	else
-	// 		rotate(a, 'a');
-	// 	size = ft_lstsize(*a);
-	// 	i++;
-	// }
-
 	int	ref;
 	int	i;
 	int nb;
 	int	moy;
 	int	chunk;
-	
+
 	if (ft_lstsize(*a) <= 100)
 		chunk = ft_lstsize(*a) / 5;
 	else
@@ -141,31 +117,41 @@ void	case_of_over_five(t_list **a, t_list **b)
 	}
 }
 
-void	get_b(t_list **a, t_list **b)
+void	get_back_b(t_list **a, t_list **b)
 {
-	int		chunk;
-	t_list	*last;
-	t_list	*before_last;
+	int	index;
+	int	pos1;
+	int	pos2;
 
-	chunk = ft_lstsize(*b);	
-	while(--chunk > 0 && ft_lstsize(*b) > 1)
+	index = ft_lstsize(*b) - 1;
+	while(index > 0)
 	{
-		last = ft_lstlast(*b);
-		before_last = ft_before_last(*b);
-		if (chunk == (*b)->next->index)
-			swap(b, 'b');
-		else if (chunk == before_last->index)
-		{
-			reverse_rotate(b , 'b');
-			reverse_rotate(b , 'b');
+		pos1 = get_pos(index, *b);
+		pos2 = get_pos(index - 1, *b);
+		if (numb_of_instruction(pos1, ft_lstsize(*b)) > numb_of_instruction(pos2, ft_lstsize(*b)))
+	  	{
+			push_back(index - 1, b, a);
+			push_back(index, b, a);
+	  		swap(a, 'a');
 		}
-		else if (chunk == last->index)
-			reverse_rotate(b , 'b');
-		push(b, a, 'a');
+		else
+		{
+	 		push_back(index, b, a); 		
+	 		push_back(index - 1, b, a);	
+		}
+		index = ft_lstsize(*b) - 1;
 	}
-	push(b, a, 'a');
-}
+	if (index == 0)
+	{
+		push(b, a, 'a');
+		if ((*a)->data > (*a)->next->data)
+			swap(a, 'a');
+	}
 
+	// printf("pos ; %d\n",pos1);	
+	// printf("pos2 ; %d",pos2);	
+
+}
 
 
 
