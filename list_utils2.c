@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.c                                     :+:      :+:    :+:   */
+/*   list_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 12:16:42 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/05 19:02:07 by okrich           ###   ########.fr       */
+/*   Created: 2022/12/05 16:16:14 by okrich            #+#    #+#             */
+/*   Updated: 2022/12/05 16:16:30 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_push_swap(t_list **a, t_list **b)
+t_list	*ft_before_last(t_list *lst)
 {
-	int		size;
-
-	size = ft_lstsize(*a);
-	if (size == 2)
-		swap(a, 'a');
-	else if (size == 3)
-		case_of_three(a);
-	else if (size == 4)
-		case_of_four(a, b);
-	else if (size == 5)
-		case_of_five(a, b);
-	else if (size > 5)
+	while (lst->next)
 	{
-		case_of_over_five(a, b);
-		get_back_b(a, b);
-	}
-	ft_lstclear(a);
+		if (lst->next->next == NULL)
+			break ;
+		lst = lst->next;
+	}	
+	return (lst);
+}
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	while (lst)
+	{
+		if (lst->next == NULL)
+			break ;
+		lst = lst->next;
+	}	
+	return (lst);
 }

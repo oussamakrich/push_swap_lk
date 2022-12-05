@@ -6,18 +6,18 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 12:39:58 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/04 13:54:14 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/05 16:08:52 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_pos(int	index, t_list *lst)
+int	get_pos(int index, t_list *lst)
 {
 	int	i;
 
 	i = 1;
-	while(lst)
+	while (lst)
 	{
 		if (lst->index == index)
 			break ;
@@ -27,9 +27,9 @@ int	get_pos(int	index, t_list *lst)
 	return (i);
 }
 
-int	numb_of_instruction(int	pos, int size)
+int	numb_of_instruction(int pos, int size)
 {
-	int x;
+	int	x;
 
 	if (pos > size / 2)
 		x = size - pos + 1;
@@ -44,12 +44,12 @@ void	push_back(int index, t_list **src, t_list **dst)
 	int	nb_inst;
 	int	rtate;
 
-	rtate = 0;	
+	rtate = 0;
 	pos = get_pos(index, *src);
 	nb_inst = numb_of_instruction(pos, ft_lstsize(*src));
-	if (pos < ft_lstsize(*src) / 2)
+	if (pos <= ft_lstsize(*src) / 2)
 		rtate = 1;
-	while(nb_inst)
+	while (nb_inst)
 	{
 		if (rtate == 1)
 			rotate(src, 'b');
@@ -58,5 +58,4 @@ void	push_back(int index, t_list **src, t_list **dst)
 		nb_inst--;
 	}
 	push(src, dst, 'a');
-	
 }

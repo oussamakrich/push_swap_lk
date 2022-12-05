@@ -6,12 +6,12 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:56:10 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/04 13:43:26 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/05 19:01:51 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -46,12 +46,12 @@ void	rr(t_list **a, t_list **b);
 void	reverse_rotate(t_list **lst, char c);
 void	rrr(t_list **a, t_list **b);
 
-int	numb_of_instruction(int	pos, int size);
-int	pos_min(t_list	*lst);
-int	ft_atoi(char *str);
-int	is_sorted(t_list *a);
-int	cmp(t_list *lst);
-int	get_pos(int	index, t_list *lst);
+int		numb_of_instruction(int pos, int size);
+int		pos_min(t_list	*lst);
+int		ft_atoi(char *str);
+int		is_sorted(t_list *a);
+int		cmp(t_list *lst);
+int		get_pos(int index, t_list *lst);
 
 void	push_back(int index, t_list **src, t_list **dst);	
 
@@ -59,7 +59,7 @@ t_list	*ft_before_last(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(int data);
 
-int	ft_lstsize(t_list *lst);
+int		ft_lstsize(t_list *lst);
 
 void	ft_lstadd_front(t_list **lst, t_list *nw);
 void	ft_lstadd_back(t_list **lst, t_list *nw);

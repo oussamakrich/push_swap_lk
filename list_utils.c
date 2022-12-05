@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:01:12 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/03 15:10:35 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/05 18:35:43 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ int	ft_lstsize(t_list *lst)
 	int	i;
 
 	i = 0;
-	while (lst != NULL)
+	if (lst == NULL)
+		return (i);
+	i = 1;
+	while (lst->next)
 	{
 		i++;
 		lst = lst->next;
@@ -56,29 +59,6 @@ t_list	*ft_lstnew(int data)
 	return (head);
 }
 
-
-t_list	*ft_before_last(t_list *lst)
-{
-	while (lst->next)
-	{
-		if (lst->next->next == NULL)
-			break ;
-		lst = lst->next;
-	}	
-	return (lst);
-}
-
-t_list	*ft_lstlast(t_list *lst)
-{
-	while (lst)
-	{
-		if (lst->next == NULL)
-			break ;
-		lst = lst->next;
-	}	
-	return (lst);
-}
-
 void	ft_lstclear(t_list **lst)
 {
 	t_list	*tmp;
@@ -90,7 +70,5 @@ void	ft_lstclear(t_list **lst)
 		tmp = (*lst)->next;
 		free(*lst);
 		*lst = tmp;
-		// for debug 
-		// printf("free\n");
 	}
 }

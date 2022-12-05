@@ -6,11 +6,12 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:11:43 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/04 17:48:21 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/05 11:30:02 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdarg.h>
 
 void	ft_putchar(unsigned char c, int *count)
 {
@@ -41,6 +42,8 @@ int	ft_format(va_list ag, char c, int *count)
 {
 	if (c == '\0')
 		return (1);
+	else if (c == 'c')
+		ft_putchar(va_arg(ag, int), count);
 	else if (c == 's')
 		ft_putstr(va_arg(ag, char *), count);
 	else

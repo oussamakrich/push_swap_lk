@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 11:51:30 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/04 16:51:49 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/05 19:01:07 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	case_of_three(t_list **a)
 	int	n2;
 	int	n3;
 
-	while(is_sorted(*a) == 0)
+	while (is_sorted(*a) == 0)
 	{
 		n1 = (*a)->data;
 		n2 = (*a)->next->data;
@@ -27,8 +27,8 @@ void	case_of_three(t_list **a)
 		if (n1 < n2)
 			reverse_rotate(a, 'a');
 		else if (n1 > n2 && n1 > n3)
-			rotate(a, 'a');	
-		else if (n1 > n2 && n1 < n3)	
+			rotate(a, 'a');
+		else if (n1 > n2 && n1 < n3)
 			swap(a, 'a');
 	}
 }
@@ -55,14 +55,15 @@ void	case_of_four(t_list **a, t_list **b)
 void	case_of_five(t_list	**a, t_list **b)
 {
 	int	pos;
-	int	size_a = 5;
+	int	size_a;
 
-	while(size_a > 3)
+	size_a = ft_lstsize(*a);
+	while (size_a > 3)
 	{
 		pos = pos_min(*a);
 		if (pos == 2)
 			swap(a, 'a');
-		else if(pos == 3)
+		else if (pos == 3)
 		{
 			rotate(a, 'a');
 			swap(a, 'a');
@@ -82,26 +83,26 @@ void	case_of_five(t_list	**a, t_list **b)
 	push(b, a, 'a');
 }
 
-
 void	case_of_over_five(t_list **a, t_list **b)
 {
+	//FIX : more than 25
 	int	ref;
 	int	i;
-	int nb;
+	int	nb;
 	int	moy;
 	int	chunk;
 
-	if (ft_lstsize(*a) <= 100)
+	if (ft_lstsize(*a) <= 200)
 		chunk = ft_lstsize(*a) / 5;
 	else
 		chunk = ft_lstsize(*a) / 10;
 	moy = chunk / 2;
 	ref = 0;
-	while(*a)
+	while (*a)
 	{
 		i = 0;
 		ref += chunk;
-		while(*a && i < chunk)
+		while (*a && i < chunk)
 		{
 			nb = (*a)->index;
 			if (nb < ref)
@@ -124,37 +125,24 @@ void	get_back_b(t_list **a, t_list **b)
 	int	pos2;
 
 	index = ft_lstsize(*b) - 1;
-	while(index > 0)
+	while (index > 0)
 	{
 		pos1 = get_pos(index, *b);
 		pos2 = get_pos(index - 1, *b);
+		//FIX : line too long
 		if (numb_of_instruction(pos1, ft_lstsize(*b)) > numb_of_instruction(pos2, ft_lstsize(*b)))
-	  	{
+		{
 			push_back(index - 1, b, a);
 			push_back(index, b, a);
-	  		swap(a, 'a');
+			swap(a, 'a');
 		}
 		else
 		{
-	 		push_back(index, b, a); 		
-	 		push_back(index - 1, b, a);	
+			push_back(index, b, a);		
+			push_back(index - 1, b, a);
 		}
 		index = ft_lstsize(*b) - 1;
 	}
 	if (index == 0)
-	{
 		push(b, a, 'a');
-		if ((*a)->data > (*a)->next->data)
-			swap(a, 'a');
-	}
-
-	// printf("pos ; %d\n",pos1);	
-	// printf("pos2 ; %d",pos2);	
-
 }
-
-
-
-
-
-

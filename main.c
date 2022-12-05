@@ -6,44 +6,56 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 11:55:42 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/04 17:32:00 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/05 19:01:45 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int	isvalid(char *str)
+void	error(int ret)
 {
-	if (*str == '-' || *str == '+')
-		str++;
-	if (*str == '\0')
-		return (1);
-	while(*str)
-	{
-		if (*str >= '0' && *str <= '9')
-			str++;
-		else
-			return (1);
-	}
-	return (0);
+	write(2, "Error", 5);
+	exit (ret);
 }
 
-void	print_list(t_list **begin_list)
+void	isvalid(char **av)
 {
-	t_list *tmp = *begin_list;
-	while(tmp)
+	char	*str;
+	int		i;
+
+	i = 1;
+	while (av[i])
 	{
-		printf("data = %d index = %d\n",tmp->data,tmp->index);
+		str = av[i];
+		if (*str == '-' || *str == '+')
+			str++;
+		if (*str == '\0')
+			error(1);
+		while (*str)
+		{
+			if (*str >= '0' && *str <= '9')
+				str++;
+			else
+				error(1);
+		}
+		i++;
+	}
+}
+
+void	print_list(t_list *tmp)
+{
+	while (tmp)
+	{
+		printf("data = %d index = %d\n", tmp->data, tmp->index);
 		tmp = tmp->next;
 	}
 }
 
-void my_exit()
-{
-	system("leaks a.out");
-}
-
+// void my_exit()
+// {
+// 	system("leaks push_swap");
+// }
+//
 int	main(int ac, char **av)
 {
 	t_list	*a;
@@ -52,30 +64,22 @@ int	main(int ac, char **av)
 	int		i;
 
 	i = 0;
-	while(++i < ac)
+	// FIX : CHECK OVERFLOW
+	isvalid(av);
+	while (++i < ac)
 	{
-		// FIX : CHECK OVERFLOW
-		if (isvalid(av[i]))
-			return(write(2, "error val", 9), 1);
-	}
-	i = 0;
-	while(++i < ac)
-	{
-		node = ft_lstnew(ft_atoi(av[i])); 
+		node = ft_lstnew(ft_atoi(av[i]));
 		if (node == NULL)
-			return (ft_lstclear(&a), 0);
-		ft_indexin(&a,node);
+			return (ft_lstclear(&a), 1);
+		ft_indexin(&a, node);
 		ft_lstadd_back(&a, node);
 	}
 	if (cmp(a))
 	{
 		ft_lstclear(&a);
-		return(write(2, "error cmp", 9), 1);
+		error(1);
 	}
 	if (is_sorted(a))
-		return(ft_lstclear(&a), 0);
+		return (ft_lstclear(&a), 0);
 	ft_push_swap(&a, &b);
-	print_list(&a);
-	printf("is sorted : %d",is_sorted(a));
-	// atexit(my_exit);
 }
