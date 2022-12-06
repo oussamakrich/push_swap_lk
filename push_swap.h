@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:56:10 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/05 19:01:51 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/06 12:31:57 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		cmp(t_list *lst);
 int		get_pos(int index, t_list *lst);
 
 void	push_back(int index, t_list **src, t_list **dst);	
+void	push_two(int first, int second, t_list **src, t_list **dst, int swp);
 
 t_list	*ft_before_last(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
