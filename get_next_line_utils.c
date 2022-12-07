@@ -6,11 +6,11 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:13:04 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/07 10:37:08 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/07 18:38:49 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 ssize_t	ft_strlen(char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 12:39:58 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/06 12:31:43 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/07 17:51:29 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,4 @@ void	push_two(int first, int second, t_list **src, t_list **dst, int swp)
 	push_back(second, src, dst);
 	if (swp == 1)
 		swap(dst, 'a');
-
 }

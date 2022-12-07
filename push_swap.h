@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:56:10 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/06 12:31:57 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/07 18:50:55 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include <stddef.h>
 # include <stdarg.h>
 # include <limits.h>
+# include <sys/_types/_ssize_t.h>
+# include <sys/fcntl.h>
+# include <stddef.h>
+# include <fcntl.h>
 
 typedef struct s_list
 {
@@ -48,9 +52,6 @@ void	rrr(t_list **a, t_list **b);
 
 int		numb_of_instruction(int pos, int size);
 int		pos_min(t_list	*lst);
-int		ft_atoi(char *str);
-int		is_sorted(t_list *a);
-int		cmp(t_list *lst);
 int		get_pos(int index, t_list *lst);
 
 void	push_back(int index, t_list **src, t_list **dst);	
@@ -66,5 +67,24 @@ void	ft_lstadd_front(t_list **lst, t_list *nw);
 void	ft_lstadd_back(t_list **lst, t_list *nw);
 void	ft_lstclear(t_list **lst);
 void	ft_indexin(t_list **lst, t_list	*nd);
+
+# ifndef BUFFER_SIZE
+# define BUFFER_SIZE 10
+# endif
+
+char	*ft_strnjoin(char *s1, char *s2, ssize_t i);
+char	*ft_strndup(char *s1, ssize_t n);
+char	*get_next_line(int fd);
+ssize_t	ft_strlen(char *str);
+
+int		ft_strcmp(char *s1, char *s2);
+
+void	do_instruct(t_list **a, t_list **b, char *inst);
+
+int		ft_atoi(char *str, t_list **a);
+int		is_sorted(t_list *a);
+void	error(int ret);
+void	isvalid(char **av);
+void	cmp(t_list **a);
 
 #endif 

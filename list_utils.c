@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:01:12 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/05 18:35:43 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/07 17:11:52 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ t_list	*ft_lstnew(int data)
 	if (head == NULL)
 		return (NULL);
 	head->data = data;
+	head->index = 0;
 	head->next = NULL;
 	return (head);
 }
