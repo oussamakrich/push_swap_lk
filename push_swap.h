@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:56:10 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/08 13:27:40 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/08 16:20:49 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		ft_printf(const char *s, ...);
 void	case_of_three(t_list **a);
 void	case_of_four(t_list **a, t_list **b);
 void	case_of_five(t_list	**a, t_list **b);
-void	case_of_over_five(t_list **a, t_list **b);
+void	case_of_over_five(t_list **a, t_list **b, int chunk);
 void	get_b(t_list **a, t_list **b);
 void	get_back_b(t_list **a, t_list **b);
 
@@ -53,6 +53,7 @@ void	rrr(t_list **a, t_list **b);
 int		numb_of_instruction(int pos, int size);
 int		pos_min(t_list	*lst);
 int		get_pos(int index, t_list *lst);
+int		get_chunk(int size);
 
 void	push_back(int index, t_list **src, t_list **dst);	
 void	push_two(t_list **src, t_list **dst);

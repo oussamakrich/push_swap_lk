@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 11:51:30 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/08 15:59:32 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/08 19:56:43 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,24 +77,15 @@ void	case_of_five(t_list	**a, t_list **b)
 		push(a, b, 'b');
 		size_a = ft_lstsize(*a);
 	}
-	case_of_three(a);
-	push(b, a, 'a');
-	push(b, a, 'a');
 }
 
-void	case_of_over_five(t_list **a, t_list **b)
+void	case_of_over_five(t_list **a, t_list **b, int chunk)
 {
-	//FIX : more than 25
 	int	ref;
 	int	i;
 	int	nb;
 	int	moy;
-	int	chunk;
 
-	if (ft_lstsize(*a) < 200)
-		chunk = ft_lstsize(*a) / 5;
-	else
-		chunk = ft_lstsize(*a) / 10;
 	moy = chunk / 2;
 	ref = 0;
 	while (*a)
@@ -104,7 +95,7 @@ void	case_of_over_five(t_list **a, t_list **b)
 		while (*a && i < chunk)
 		{
 			nb = (*a)->index;
-			if (nb <= ref)
+			if (nb < ref)
 			{
 				push(a, b, 'b');
 				if (nb >= ref - moy)
@@ -132,7 +123,7 @@ void	get_back_b(t_list **a, t_list **b)
 		pos2 = get_pos(index - 1, *b);
 		nb_instru_1 = numb_of_instruction(pos1, ft_lstsize(*b));
 		nb_instru_2 = numb_of_instruction(pos2, ft_lstsize(*b));
-		if ( nb_instru_1 > nb_instru_2)
+		if (nb_instru_1 > nb_instru_2)
 			push_two(b, a);
 		else
 			push_one(b, a);

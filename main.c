@@ -6,21 +6,12 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 11:55:42 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/08 15:59:18 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/08 16:48:25 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
-
-void	print_list(t_list *tmp)
-{
-	while (tmp)
-	{
-		printf("data = %d index = %d\n", tmp->data, tmp->index);
-		tmp = tmp->next;
-	}
-}
 
 // void my_exit()
 // {

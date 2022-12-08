@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:55:45 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/07 18:02:34 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/08 17:33:12 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int	pos_min(t_list	*lst)
 	lst = lst->next;
 	while (lst)
 	{
+		i++;
 		if (min > lst->data)
 		{
-			pos = i + 1;
+			pos = i;
 			min = lst->data;
 		}
-		i++;
 		lst = lst->next;
 	}
 	return (pos);
@@ -49,4 +49,12 @@ void	ft_indexin(t_list **lst, t_list	*nd)
 			nd->index += 1;
 		tmp = tmp->next;
 	}
+}
+
+int	get_chunk(int size)
+{
+	if (size < 200)
+		return (size / 5);
+	else
+		return (size / 10);
 }
