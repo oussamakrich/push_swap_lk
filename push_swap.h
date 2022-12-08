@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:56:10 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/07 18:50:55 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/08 13:27:40 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ int		pos_min(t_list	*lst);
 int		get_pos(int index, t_list *lst);
 
 void	push_back(int index, t_list **src, t_list **dst);	
-void	push_two(int first, int second, t_list **src, t_list **dst, int swp);
+void	push_two(t_list **src, t_list **dst);
+void	push_one(t_list **src, t_list **dst);
 
 t_list	*ft_before_last(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
@@ -68,9 +69,7 @@ void	ft_lstadd_back(t_list **lst, t_list *nw);
 void	ft_lstclear(t_list **lst);
 void	ft_indexin(t_list **lst, t_list	*nd);
 
-# ifndef BUFFER_SIZE
 # define BUFFER_SIZE 10
-# endif
 
 char	*ft_strnjoin(char *s1, char *s2, ssize_t i);
 char	*ft_strndup(char *s1, ssize_t n);

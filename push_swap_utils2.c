@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 12:39:58 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/07 17:51:29 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/08 13:42:45 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,22 @@ void	push_back(int index, t_list **src, t_list **dst)
 	push(src, dst, 'a');
 }
 
-void	push_two(int first, int second, t_list **src, t_list **dst, int swp)
+void	push_two(t_list **src, t_list **dst)
 {
-	push_back(first, src, dst);
+	int	first;
+	int	second;
+
+	first = ft_lstsize(*src) - 1;
+	second = first - 1;
 	push_back(second, src, dst);
-	if (swp == 1)
-		swap(dst, 'a');
+	push_back(first, src, dst);
+	swap(dst, 'a');
+}
+
+void	push_one(t_list **src, t_list **dst)
+{
+	int	index;
+
+	index = ft_lstsize(*src) - 1;
+	push_back(index, src, dst);
 }

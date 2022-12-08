@@ -6,12 +6,11 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 11:51:30 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/06 14:39:06 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/08 15:59:32 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	case_of_three(t_list **a)
 {
@@ -92,7 +91,7 @@ void	case_of_over_five(t_list **a, t_list **b)
 	int	moy;
 	int	chunk;
 
-	if (ft_lstsize(*a) <= 200)
+	if (ft_lstsize(*a) < 200)
 		chunk = ft_lstsize(*a) / 5;
 	else
 		chunk = ft_lstsize(*a) / 10;
@@ -100,9 +99,9 @@ void	case_of_over_five(t_list **a, t_list **b)
 	ref = 0;
 	while (*a)
 	{
-		i = -1;
+		i = 0;
 		ref += chunk;
-		while (*a && ++i < chunk)
+		while (*a && i < chunk)
 		{
 			nb = (*a)->index;
 			if (nb <= ref)
@@ -110,6 +109,7 @@ void	case_of_over_five(t_list **a, t_list **b)
 				push(a, b, 'b');
 				if (nb >= ref - moy)
 					rotate(b, 'b');
+				i++;
 			}
 			else
 				rotate(a, 'a');
@@ -133,9 +133,9 @@ void	get_back_b(t_list **a, t_list **b)
 		nb_instru_1 = numb_of_instruction(pos1, ft_lstsize(*b));
 		nb_instru_2 = numb_of_instruction(pos2, ft_lstsize(*b));
 		if ( nb_instru_1 > nb_instru_2)
-			push_two(index - 1, index, b, a, 1);
+			push_two(b, a);
 		else
-			push_two(index, index - 1, b, a, 0);
+			push_one(b, a);
 		index = ft_lstsize(*b) - 1;
 	}
 	if (index == 0)

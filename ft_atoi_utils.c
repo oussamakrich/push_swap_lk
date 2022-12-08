@@ -6,35 +6,29 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 20:04:37 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/07 20:05:01 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/07 21:29:31 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	skip_spaces(char **dub)
+char	*skip_spaces(char *str)
 {
-	char	*str;
-
-	str = *dub;
 	while (*str == 32 || (*str >= 9 && *str <= 13))
 		str++;
+	return (str);
 }
 
-int	get_sn(char **dub)
+char	*get_sn(char *str, int *sn)
 {
-	char	*str;
-	int		sn;
-
-	str = *dub;
-	sn = 1;
+	*sn = 1;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
-			sn = -1;
+			*sn = -1;
 		str++;
 	}
-	return (sn);
+	return (str);
 }
 
 int	ft_atoi(char *str, t_list **a)
@@ -45,8 +39,8 @@ int	ft_atoi(char *str, t_list **a)
 
 	acc = 0;
 	res = 0;
-	skip_spaces(&str);
-	sn = get_sn(&str);
+	str = skip_spaces(str);
+	str = get_sn(str, &sn);
 	while (*str >= '0' && *str <= '9')
 	{
 		res = acc * 10 + *str - '0';
