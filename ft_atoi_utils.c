@@ -6,18 +6,11 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 20:04:37 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/07 21:29:31 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/09 15:16:05 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-char	*skip_spaces(char *str)
-{
-	while (*str == 32 || (*str >= 9 && *str <= 13))
-		str++;
-	return (str);
-}
 
 char	*get_sn(char *str, int *sn)
 {
@@ -31,7 +24,7 @@ char	*get_sn(char *str, int *sn)
 	return (str);
 }
 
-int	ft_atoi(char *str, t_list **a)
+int	ft_atoi(char *str, char **sp, t_list **a)
 {
 	int	sn;
 	int	res;
@@ -39,7 +32,6 @@ int	ft_atoi(char *str, t_list **a)
 
 	acc = 0;
 	res = 0;
-	str = skip_spaces(str);
 	str = get_sn(str, &sn);
 	while (*str >= '0' && *str <= '9')
 	{
@@ -50,6 +42,7 @@ int	ft_atoi(char *str, t_list **a)
 		if (res < acc)
 		{
 			ft_lstclear(a);
+			free_words(sp);
 			error(1);
 		}
 		acc = res;

@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 11:14:10 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/07 17:46:05 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/09 11:16:31 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	do_instruct(t_list **a, t_list **b, char *inst)
 	else if (ft_strcmp(inst, "sb\n") == 0)
 		swap(b, '0');
 	else if (ft_strcmp(inst, "ss\n") == 0)
-		ss(a, b);
+		b_ss(a, b);
 	else if (ft_strcmp(inst, "pa\n") == 0)
 		push(b, a, '0');
 	else if (ft_strcmp(inst, "pb\n") == 0)
@@ -41,13 +41,13 @@ void	do_instruct(t_list **a, t_list **b, char *inst)
 	else if (ft_strcmp(inst, "rb\n") == 0)
 		rotate(b, '0');
 	else if (ft_strcmp(inst, "rr\n") == 0)
-		rr(a, b);
+		b_rr(a, b);
 	else if (ft_strcmp(inst, "rra\n") == 0)
 		reverse_rotate(a, '0');
 	else if (ft_strcmp(inst, "rrb\n") == 0)
 		reverse_rotate(b, '0');
 	else if (ft_strcmp(inst, "rrr\n") == 0)
-		rrr(a, b);
+		b_rrr(a, b);
 	else
-		error(1);
+		error_and_clear(a, b);
 }

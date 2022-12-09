@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_instruct.c                               :+:      :+:    :+:   */
+/*   instruct.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:55:43 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/05 16:13:42 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/09 11:05:57 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	push(t_list	**src, t_list **dst, char c)
 {	
 	void	*tmp;
 
+	if (*src == NULL)
+		return ;
 	tmp = (*src)->next;
 	ft_lstadd_front(dst, *src);
 	*src = tmp;
@@ -51,7 +53,7 @@ void	rotate(t_list **lst, char c)
 {
 	t_list	*tmp;
 
-	if (ft_lstsize(*lst) == 1)
+	if (ft_lstsize(*lst) <= 1)
 		return ;
 	tmp = *lst;
 	ft_lstadd_back(lst, *lst);
@@ -66,7 +68,7 @@ void	reverse_rotate(t_list **lst, char c)
 	t_list	*last;
 	t_list	*beforelast;
 
-	if (ft_lstsize(*lst) == 1)
+	if (ft_lstsize(*lst) <= 1)
 		return ;
 	beforelast = ft_before_last(*lst);
 	last = ft_lstlast(*lst);

@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   split_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 11:55:42 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/09 16:11:45 by okrich           ###   ########.fr       */
+/*   Created: 2022/12/09 11:50:29 by okrich            #+#    #+#             */
+/*   Updated: 2022/12/09 16:10:48 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+size_t	sp_strlen(char *str)
 {
-	t_list	*a;
-	t_list	*b;
-	char	**str;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	if (ac == 1)
-		return (0);
-	while (av[++i])
+	while (str[i])
+		i++;
+	return (i);
+}
+
+size_t	sp_strlcpy(char *dst, char *src, size_t dstsize)
+{
+	size_t	j;
+	size_t	i;
+
+	i = sp_strlen(src);
+	if (dstsize == 0)
+		return (i);
+	j = 0;
+	while (--dstsize && src[j] != '\0')
 	{
-		str = ft_split(av[i], ' ');
-		if (str == NULL)
-			return (1);
-		isvalid(str);
-		free_words(str);
+		dst[j] = src[j];
+		j++;
 	}
-	if (fill_a(av, ac, &a))
-		return (1);
-	cmp(&a);
-	if (is_sorted(a) == 1)
-		return (ft_lstclear(&a), 0);
-	ft_push_swap(&a, &b);
+	dst[j] = '\0';
+	return (i);
 }

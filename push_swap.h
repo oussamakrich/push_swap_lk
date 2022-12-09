@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:56:10 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/08 16:20:49 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/09 17:32:47 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ typedef struct s_list
 void	ft_putstr(char *str, int *count);
 int		ft_printf(const char *s, ...);
 
+void	free_words(char **words);
+char	**ft_split(char *s, char c);
+size_t	sp_strlcpy(char *dst, char *src, size_t dstsize);
+size_t	sp_strlen(char *str);
+
 void	case_of_three(t_list **a);
 void	case_of_four(t_list **a, t_list **b);
 void	case_of_five(t_list	**a, t_list **b);
@@ -49,6 +54,10 @@ void	rotate(t_list **lst, char c);
 void	rr(t_list **a, t_list **b);
 void	reverse_rotate(t_list **lst, char c);
 void	rrr(t_list **a, t_list **b);
+
+void	b_rr(t_list **a, t_list **b);
+void	b_rrr(t_list **a, t_list **b);
+void	b_ss(t_list **a, t_list **b);
 
 int		numb_of_instruction(int pos, int size);
 int		pos_min(t_list	*lst);
@@ -73,7 +82,7 @@ void	ft_indexin(t_list **lst, t_list	*nd);
 # define BUFFER_SIZE 10
 
 char	*ft_strnjoin(char *s1, char *s2, ssize_t i);
-char	*ft_strndup(char *s1, ssize_t n);
+char	*ft_strndup(char *s1, ssize_t n, ssize_t	*fail);
 char	*get_next_line(int fd);
 ssize_t	ft_strlen(char *str);
 
@@ -81,9 +90,11 @@ int		ft_strcmp(char *s1, char *s2);
 
 void	do_instruct(t_list **a, t_list **b, char *inst);
 
-int		ft_atoi(char *str, t_list **a);
+int		fill_a(char **av, int ac, t_list **a);
+int		ft_atoi(char *str, char **sp, t_list **a);
 int		is_sorted(t_list *a);
 void	error(int ret);
+void	error_and_clear(t_list **a, t_list **b);
 void	isvalid(char **av);
 void	cmp(t_list **a);
 

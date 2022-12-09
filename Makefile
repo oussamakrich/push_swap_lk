@@ -6,7 +6,7 @@
 #    By: okrich <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/05 16:28:30 by okrich            #+#    #+#              #
-#    Updated: 2022/12/07 21:18:24 by okrich           ###   ########.fr        #
+#    Updated: 2022/12/09 16:19:30 by okrich           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,18 +14,20 @@ NAME = push_swap
 
 NAME_BONUS = checker
 
-CC = cc -g
+CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 
 SRC = main ft_push_swap push_swap_cases push_swap_utils \
 	  push_swap_utils2 utils_common instruct instruct2 \
-	  list_utils list_utils2 ft_printf ft_atoi_utils
+	  list_utils list_utils2 ft_printf ft_atoi_utils \
+	  ft_split split_utils utils_common2
 	  
 
 SRC_B = checker checker_utils instruct instruct2 \
 		list_utils list_utils2 utils_common \
-		get_next_line get_next_line_utils ft_printf ft_atoi_utils
+		get_next_line get_next_line_utils ft_printf ft_atoi_utils \
+	  	ft_split split_utils utils_common2
 
 OBJ = $(addsuffix .o, $(SRC))
 

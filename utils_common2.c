@@ -1,39 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils_common2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 11:55:42 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/09 16:11:45 by okrich           ###   ########.fr       */
+/*   Created: 2022/12/09 13:47:56 by okrich            #+#    #+#             */
+/*   Updated: 2022/12/09 16:21:08 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void	ft_indexin(t_list **lst, t_list	*nd)
 {
-	t_list	*a;
-	t_list	*b;
+	t_list	*tmp;
+
+	tmp = *lst;
+	nd->index = 0;
+	while (tmp)
+	{
+		if (tmp->data > nd->data)
+			tmp->index += 1;
+		else
+			nd->index += 1;
+		tmp = tmp->next;
+	}
+}
+
+int	fill_a(char **av, int ac, t_list **a)
+{
 	char	**str;
+	t_list	*node;
 	int		i;
+	int		j;
 
 	i = 0;
-	if (ac == 1)
-		return (0);
-	while (av[++i])
+	while (++i < ac)
 	{
 		str = ft_split(av[i], ' ');
 		if (str == NULL)
 			return (1);
-		isvalid(str);
+		j = 0;
+		while (str[j])
+		{
+			node = ft_lstnew(ft_atoi(str[j], str, a));
+			if (node == NULL)
+				return (ft_lstclear(a), 1);
+			ft_indexin(a, node);
+			ft_lstadd_back(a, node);
+			j++;
+		}
 		free_words(str);
 	}
-	if (fill_a(av, ac, &a))
-		return (1);
-	cmp(&a);
-	if (is_sorted(a) == 1)
-		return (ft_lstclear(&a), 0);
-	ft_push_swap(&a, &b);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:30:50 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/07 21:14:47 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/09 17:38:54 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,20 @@ void	error(int ret)
 	exit (ret);
 }
 
+void	error_and_clear(t_list **a, t_list **b)
+{
+	ft_lstclear(a);
+	ft_lstclear(b);
+	write(2, "Error\n", 6);
+	exit (1);
+}
+
 void	isvalid(char **av)
 {
 	char	*str;
 	int		i;
 
-	i = 1;
+	i = 0;
 	while (av[i])
 	{
 		str = av[i];

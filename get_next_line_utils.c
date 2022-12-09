@@ -6,11 +6,12 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:13:04 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/07 18:38:49 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/09 17:46:13 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <sys/_types/_ssize_t.h>
 
 ssize_t	ft_strlen(char *str)
 {
@@ -57,7 +58,7 @@ char	*ft_strnjoin(char *s1, char *s2, ssize_t i)
 	return (join);
 }
 
-char	*ft_strndup(char *s1, ssize_t n)
+char	*ft_strndup(char *s1, ssize_t n, ssize_t *fail)
 {
 	int		len;
 	char	*dst;
@@ -67,7 +68,10 @@ char	*ft_strndup(char *s1, ssize_t n)
 		return (NULL);
 	dst = malloc(sizeof(char) * (len + 1));
 	if (dst == NULL)
+	{
+		*fail = -1;
 		return (NULL);
+	}
 	if (n == -1)
 		n = len;
 	ft_strncpy(dst, s1, n);

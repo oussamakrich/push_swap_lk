@@ -6,13 +6,13 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:22:01 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/07 18:01:21 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/09 17:42:57 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static ssize_t	check_newline(char *reader)
+ssize_t	check_newline(char *reader)
 {
 	ssize_t	i;
 
@@ -30,17 +30,18 @@ static ssize_t	check_newline(char *reader)
 	return (i + 1);
 }
 
-static char	*get_resteofline(ssize_t n, char **rest)
+char	*get_resteofline(ssize_t n, char **rest)
 {
 	char	*tmp;
 	char	*line;
+	ssize_t	nl;
 
-	line = ft_strndup(*rest, n);
+	line = ft_strndup(*rest, n, &nl);
 	if (line == NULL)
 		return (NULL);
 	if (n < ft_strlen(*rest))
 	{
-		tmp = ft_strndup(*rest + n, -1);
+		tmp = ft_strndup(*rest + n, -1, &nl);
 		free(*rest);
 		if (tmp == NULL)
 			return (NULL);
@@ -54,14 +55,14 @@ static char	*get_resteofline(ssize_t n, char **rest)
 	return (line);
 }
 
-static	ssize_t	read_and_get_line(ssize_t	n, int fd, char **line, char **rest)
+ssize_t	read_and_get_line(ssize_t	n, int fd, char **line, char **rest)
 {
 	char	*reader;
 	ssize_t	pos;
 
 	reader = malloc(BUFFER_SIZE + 1);
 	if (reader == NULL)
-		return (0);
+		return (-1);
 	while (n > 0)
 	{
 		n = read(fd, reader, BUFFER_SIZE);
@@ -73,7 +74,7 @@ static	ssize_t	read_and_get_line(ssize_t	n, int fd, char **line, char **rest)
 		{
 			*line = ft_strnjoin(*line, reader, pos);
 			if (pos < n && *line != NULL)
-				*rest = ft_strndup(reader + pos, -1);
+				*rest = ft_strndup(reader + pos, -1, &n);
 			break ;
 		}
 		*line = ft_strnjoin(*line, reader, n);
@@ -89,11 +90,8 @@ char	*get_next_line(int fd)
 	char		*line;
 	ssize_t		n;
 
-	if (BUFFER_SIZE < 0)
-		return (NULL);
-	line = NULL;
 	n = check_newline(rest);
-	if (rest != NULL && n != -1)
+	if (n != -1)
 	{		
 		line = get_resteofline(n, &rest);
 		return (line);

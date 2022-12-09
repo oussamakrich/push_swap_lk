@@ -6,7 +6,7 @@
 /*   By: okrich <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:55:45 by okrich            #+#    #+#             */
-/*   Updated: 2022/12/08 17:33:12 by okrich           ###   ########.fr       */
+/*   Updated: 2022/12/09 16:20:54 by okrich           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,6 @@ int	pos_min(t_list	*lst)
 		lst = lst->next;
 	}
 	return (pos);
-}
-
-void	ft_indexin(t_list **lst, t_list	*nd)
-{
-	t_list	*tmp;
-
-	tmp = *lst;
-	nd->index = 0;
-	while (tmp)
-	{
-		if (tmp->data > nd->data)
-			tmp->index += 1;
-		else
-			nd->index += 1;
-		tmp = tmp->next;
-	}
 }
 
 int	get_chunk(int size)
